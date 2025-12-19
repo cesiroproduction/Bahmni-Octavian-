@@ -29,6 +29,17 @@ services:
     image: "bahmni/standard-config:${CONFIG_IMAGE_TAG:?}"
     volumes:
       - "${CONFIG_VOLUME:?}:/usr/local/bahmni_config"
+    # command: >
+    #   sh -lc '
+    #     ./start.sh &
+    #     pid=$!
+    #     # give it a moment to do its init/copy work
+    #     sleep 2
+    #     rm -rf /etc/bahmni_config
+    #     ln -s /usr/local/bahmni_config /etc/bahmni_config
+    #     # keep container alive for debugging (optional)
+    #     tail -f /dev/null
+    #   '
     logging: *log-config
     restart: ${RESTART_POLICY}
 
@@ -36,7 +47,7 @@ services:
     profiles: ["openelis", "bahmni-standard"]
     image: "bahmni/openelis:${OPENELIS_IMAGE_TAG:?[ERROR]}"
     volumes:
-      - "${CONFIG_VOLUME:?}:/etc/bahmni_config/:ro"
+      - "${CONFIG_VOLUME:?}:/etc/bahmni_config"
       - "bahmni-lab-results:/home/bahmni/uploaded_results"
       - "bahmni-uploaded-files:/home/bahmni/uploaded-files"
     environment:
@@ -140,72 +151,6 @@ services:
     logging: *log-config
     restart: ${RESTART_POLICY}
 
-  #Serivces for odoo-10. These services are used for backward compatibility with bahmni 0.93
-  odoo-10:
-    profiles: ["odoo-10"]
-    image: "bahmni/odoo-10:${ODOO_IMAGE_TAG:?[ERROR]}"
-    ports:
-      - "8070:8069"
-    volumes:
-      - odoo10appdata:/var/lib/odoo
-      - ${EXTRA_ODOO_10_ADDONS_PATH}:/mnt/extra-addons
-      # # Uncomment the below volume only when you need to modify existing bahmni-addons. Also make sure to update the .env file variable with odoo-modules github repo cloned path.
-      # - ${BAHMNI_ODOO_10_MODULES_PATH}:/opt/bahmni-erp/bahmni-addons
-    depends_on:
-      odoo-10-db:
-        condition: service_healthy
-    environment:
-      TZ: ${TZ}
-      HOST: ${ODOO_10_DB_HOST}
-      USER: ${ODOO_10_DB_USER}
-      PASSWORD: ${ODOO_10_DB_PASSWORD}
-    logging: *log-config
-    restart: ${RESTART_POLICY}
-
-  odoo-10-db:
-    profiles: ["odoo-10"]
-    image: "${ODOO_10_DB_IMAGE_NAME:?[ERROR]}"
-    volumes:
-      - "${ODOO_10_DB_DUMP_PATH}:/resources/db-dump"
-      - "odoo10dbdata:/var/lib/postgresql/data"
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -h localhost -U odoo"]
-      interval: 10s
-      timeout: 5s
-    environment:
-      TZ: ${TZ}
-      POSTGRES_DB: ${ODOO_10_DB_NAME:?}
-      POSTGRES_PASSWORD: ${ODOO_10_DB_PASSWORD}
-      POSTGRES_USER: ${ODOO_10_DB_USER}
-    logging: *log-config
-    restart: ${RESTART_POLICY}
-
-  odoo-10-connect:
-    profiles: ["odoo-10"]
-    image: "bahmni/odoo-connect:${ODOO_CONNECT_IMAGE_TAG:?[ERROR]}"
-    environment:
-      TZ: ${TZ}
-      ODOO_DB_SERVER: odoo-10-db
-      ODOO_DB_USERNAME: ${ODOO_10_DB_USER:?}
-      ODOO_DB_PASSWORD: ${ODOO_10_DB_PASSWORD:?}
-      OPENMRS_HOST: ${OPENMRS_HOST:?}
-      OPENMRS_PORT: ${OPENMRS_PORT:?}
-      OPENMRS_ATOMFEED_USER: ${OPENMRS_ATOMFEED_USER:?}
-      OPENMRS_ATOMFEED_PASSWORD: ${OPENMRS_ATOMFEED_PASSWORD:?}
-      OPENELIS_HOST: ${OPENELIS_HOST:?}
-      OPENELIS_PORT: ${OPENELIS_PORT:?}
-      OPENELIS_ATOMFEED_USER: ${OPENELIS_ATOMFEED_USER:?}
-      OPENELIS_ATOMFEED_PASSWORD: ${OPENELIS_ATOMFEED_PASSWORD:?}
-      ODOO_HOST: ${ODOO_10_HOST:?}
-      ODOO_PORT: ${ODOO_10_PORT:?}
-      ODOO_ATOMFEED_USER: ${ODOO_10_ATOMFEED_USER:?}
-      ODOO_ATOMFEED_PASSWORD: ${ODOO_10_ATOMFEED_PASSWORD:?}
-    depends_on:
-      odoo-10-db:
-        condition: service_healthy
-    logging: *log-config
-    restart: ${RESTART_POLICY}
-
   openmrs:
     profiles: ["emr", "bahmni-standard", "bahmni-mart"]
     image: bahmni/openmrs:${OPENMRS_IMAGE_TAG:?}
@@ -246,7 +191,7 @@ services:
     #ports:
     # - ${OMRS_DEV_DEBUG_PORT}:${OMRS_DEV_DEBUG_PORT}
     volumes:
-      - "${CONFIG_VOLUME:?}:/etc/bahmni_config/:ro"
+      - "${CONFIG_VOLUME:?}:/etc/bahmni_config"
       - "bahmni-lab-results:/home/bahmni/uploaded_results"
       - "bahmni-uploaded-files:/home/bahmni/uploaded-files"
       # - "${BAHMNI_OPENMRS_MODULES_PATH:?}/:/openmrs/data/modules/"
@@ -352,7 +297,7 @@ services:
     image: bahmni/bahmni-web:${BAHMNI_WEB_IMAGE_TAG:?}
     profiles: ["emr", "bahmni-standard", "bahmni-mart"]
     volumes:
-      - "${CONFIG_VOLUME:?}:/usr/local/apache2/htdocs/bahmni_config/:ro"
+      - "${CONFIG_VOLUME:?}:/usr/local/apache2/htdocs/bahmni_config"
     #   - "${BAHMNI_APPS_PATH:?}/ui/app/:/usr/local/apache2/htdocs/bahmni"
     #   - "${BAHMNI_APPS_PATH:?}/ui/node_modules/@bower_components/:/usr/local/apache2/htdocs/bahmni/components"
     logging: *log-config
@@ -398,7 +343,7 @@ services:
       ODOO_DB_PASSWORD: ${ODOO_DB_PASSWORD:?}
       ICD10_LITE_INDICATOR: ${ICD10_LITE_INDICATOR}
     volumes:
-      - "${CONFIG_VOLUME:?}:/etc/bahmni_config/:ro"
+      - "${CONFIG_VOLUME:?}:/etc/bahmni_config"
       - "bahmni-queued-reports:/home/bahmni/reports"
     # - "../snomed-resources/icd10-extensions-1.0.0-SNAPSHOT.jar:/var/run/bahmni-reports/bahmni-reports/WEB-INF/lib/icd10-extensions-1.0.0-SNAPSHOT.jar:ro"
     depends_on:
@@ -607,6 +552,21 @@ services:
     volumes:
       - "../snomed-resources/load-snowstorm-data.sh:/load-snowstorm-data.sh"
     #  - "${SNOWSTORM_RF2_FILE_PATH:?}:/snowstorm-data/snomed-data.zip:ro"
+
+  cloudflared-tunnel:
+    profiles: ["cloudflared"]
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflaretunnel
+    command:
+      [
+        "tunnel",
+        "--no-autoupdate",
+        "run",
+        "--token",
+        "${CLOUDFLARED_TUNNEL_TOKEN:?}",
+      ]
+    env_file:
+      - .env
 
 volumes:
   openelisdbdata:
