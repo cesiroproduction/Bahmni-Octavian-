@@ -43,13 +43,6 @@
 		},
 		{
 			"enabled": true,
-			"name": "connect",
-			"title": "Conectare",
-			"logo": "/bahmni/images/connect.png",
-			"link": "/bahmni-connect"
-		},
-		{
-			"enabled": true,
 			"name": "dcm",
 			"title": "Radiologie",
 			"logo": "/bahmni/images/pac.png",
