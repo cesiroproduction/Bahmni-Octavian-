@@ -12,7 +12,7 @@
 	"LOGIN_MESSAGE_ENTER_USERNAME_KEY": "Introduceți numele de utilizator",
 	"LOGIN_MESSAGE_ENTER_PASSWORD_KEY": "Introduceți parola",
 	"LOGIN_LABEL_SELECT_LOCATION_KEY": "Selectați locația",
-	"LOGIN_LABEL_SELECT_LOCALE_KEY": "Selectați limba",
+	"LOGIN_LABEL_SELECT_LOCALE_KEY": "Limba",
 	"HEADER_LABEL_LOGOUT_KEY": "Deconectare",
 	"HEADER_LABEL_SYNC_KEY": "Sincronizare",
 	"MESSAGE_DIALOG_OPTION_COPY": "Copiere eroare",

@@ -1,0 +1,78 @@
+{
+  "sections": [
+    {
+      "name": "Allergies",
+      "translationKey": "DASHBOARD_TITLE_ALLERGIES_KEY",
+      "icon": "fa-hand-dots",
+      "controls": [
+        {
+          "type": "allergies"
+        }
+      ]
+    },
+    {
+      "name": "Conditions",
+      "translationKey": "DASHBOARD_TITLE_CONDITIONS_KEY",
+      "icon": "fa-stethoscope",
+      "controls": [
+        {
+          "type": "conditions"
+        },
+        {
+          "type": "diagnoses"
+        }
+      ]
+    },
+    {
+      "name": "Medications",
+      "translationKey": "DASHBOARD_TITLE_MEDICATIONS_KEY",
+      "icon": "fa-pills",
+      "controls": [
+        {
+          "type": "treatment"
+        }
+      ]
+    },
+    {
+      "name": "Lab Investigations",
+      "translationKey": "DASHBOARD_TITLE_LAB_INVESTIGATIONS_KEY",
+      "icon": "fa-flask",
+      "controls": [
+        {
+          "type": "labOrders"
+        }
+      ]
+    },
+    {
+      "name": "Radiology Investigations",
+      "translationKey": "DASHBOARD_TITLE_RADIOLOGY_INVESTIGATIONS_KEY",
+      "icon": "fa-x-ray",
+      "controls": [
+        {
+          "type": "pacsOrders"
+        }
+      ]
+    },
+    {
+      "name": "Flowsheet",
+      "translationKey": "DASHBOARD_TITLE_VITALS_FLOWSHEET_KEY",
+      "icon": "fa-table",
+      "controls": [
+        {
+          "type": "flowSheet",
+          "config": {
+            "latestCount": 5,
+            "groupBy": "obstime",
+            "obsConcepts": [
+              "Temperature",
+              "Pulse",
+              "Respiratory rate",
+              "Blood Pressure",
+              "Body Position"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

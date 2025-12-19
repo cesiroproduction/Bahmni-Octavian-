@@ -56,5 +56,10 @@
 	"ADMINISTER_MEDICATION_TASK_MESSAGE": "Utilizatorul {{userId}} a administrat o sarcină de medicație pentru pacientul {{patientId}}.",
 	"STOP_SCHEDULED_MEDICATION_TASK_MESSAGE": "Utilizatorul {{userId}} a oprit o sarcină de medicație pentru pacientul {{patientId}}.",
 	"SKIP_SCHEDULED_MEDICATION_TASK_MESSAGE": "Utilizatorul {{userId}} a omis o sarcină de medicație pentru pacientul {{patientId}}.",
-	"CREATE_EMERGENCY_MEDICATION_TASK_MESSAGE": "Utilizatorul {{userId}} a adăugat o sarcină de medicație de urgență pentru pacientul {{patientId}}."
+	"CREATE_EMERGENCY_MEDICATION_TASK_MESSAGE": "Utilizatorul {{userId}} a adăugat o sarcină de medicație de urgență pentru pacientul {{patientId}}.",
+	"MODULES_LABEL_CSV_UPLOAD": "Încărcare CSV",
+	"MODULES_LABEL_CSV_EXPORT": "Export CSV",
+	"MODULES_LABEL_AUDIT_LOG": "Jurnal Audit",
+	"MODULES_LABEL_ORDER_SET": "Seturi de Comenzi",
+	"MODULES_LABEL_BEDS": "Paturi"
 }

@@ -10,6 +10,11 @@ locale_ru.json
 locale_zh.json
 locale_vi.json
 locale_ar.json
+locale_it.json
+locale_hi.json
+locale_hr.json
+locale_te.json
+locale_ko.json
 
 messages_ar.properties
 messages_de.properties
@@ -30,9 +35,6 @@ messages_ru.properties
 messages_si.properties
 messages_sw.properties
 messages_te.properties
-
-app.json
-offline-config.json
 
 # Ignore folders
 masterdata/
@@ -73,6 +75,9 @@ node_modules/
 *.html
 *.js
 
-# Ignore files
+# Ignore specific files
+app.json
+offline-config.json
+bower.json
 LICENSE
 DefaultPatientMatchingAlgorithm
