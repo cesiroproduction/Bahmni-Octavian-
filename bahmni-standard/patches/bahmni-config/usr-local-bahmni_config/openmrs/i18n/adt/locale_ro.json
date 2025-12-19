@@ -1,0 +1,21 @@
+{
+	"MODULE_LABEL_ALL_KEY": "Toate",
+	"MODULE_LABEL_TO_DISCHARGE_KEY": "De externat",
+	"MODULE_LABEL_ADMITTED_KEY": "Internați",
+	"MODULE_LABEL_TO_ADMIT_KEY": "De internat",
+	"CONSULTATION_PAGE_KEY": "Consultație",
+	"PROGRAM_MANAGEMENT_PAGE_KEY": "Pagina Gestiune Programe",
+	"DISCHARGE_SUMMARY_PAGE_KEY": "Pagina Rezumat Externare",
+	"PATIENT_ADT_PAGE_KEY": "Pagina ADT Pacient (Internare/Transfer/Externare)",
+	"PATIENT_DASHBOARD_KEY": "Panou Control Pacient",
+	"PATIENT_VISIT_PAGE_KEY": "Pagina Vizită Pacient",
+	"HOME_DASHBOARD_KEY": "Panou Control Principal",
+	"DASHBOARD_TITLE_VITALS_KEY": "Semne vitale",
+	"DASHBOARD_TITLE_PATIENT_INFORMATION_KEY": "Informații pacient",
+	"DISCHARGE_SUMMARY_ADMISSION_DETAILS_KEY": "Detalii internare",
+	"DASHBOARD_TITLE_NAVIGATION_LINKS_CONTROL_KEY": "Control link-uri navigare",
+	"DASHBOARD_TITLE_DIAGNOSIS_KEY": "Diagnostice",
+	"DASHBOARD_TITLE_ADMISSION_DETAILS_KEY": "Detalii internare",
+	"DASHBOARD_TITLE_DISPOSITION_KEY": "Dispoziție",
+	"DASHBOARD_TAB_GENERAL_KEY": "General"
+}

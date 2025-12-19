@@ -1,0 +1,18 @@
+{
+	"MODULE_LABEL_REGISTRATION_KEY": "Înregistrare",
+	"MODULE_LABEL_REGISTRATION_NEW_KEY": "Înregistrare Nouă",
+	"MODULE_LABEL_CLINICAL_KEY": "Clinic",
+	"MODULE_LABEL_INPATIENT_KEY": "Spitalizare",
+	"MODULE_LABEL_RADIOLOGY_UPLOAD_KEY": "Încărcare Radiologie",
+	"MODULE_LABEL_PATIENT_DOCUMENTS_KEY": "Documente Pacient",
+	"MODULE_LABEL_ADMIN_KEY": "Administrare",
+	"MODULE_LABEL_REPORTS_KEY": "Rapoarte",
+	"MODULE_LABEL_APOOINTMENTS_KEY": "Programări",
+	"MODULE_LABEL_ORDERS_KEY": "Comenzi",
+	"MODULE_LABEL_PROGRAMS_KEY": "Programe",
+	"MODULE_LABEL_IMPLEMENTER_INTERFACE_KEY": "Interfață Implementator",
+	"MODULE_LABEL_ATOMFEED_CONSOLE_KEY": "Consolă AtomFeed",
+	"MODULE_LABEL_APPOINTMENT_SCHEDULING_KEY": "Planificare Programări",
+	"MODULE_LABEL_BED_MANAGEMENT_KEY": "Gestionare Paturi",
+	"MODULE_LABEL_LAB_ENTRY_KEY": "Introducere Date Laborator"
+}
