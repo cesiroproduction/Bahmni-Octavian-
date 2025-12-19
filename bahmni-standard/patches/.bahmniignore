@@ -15,6 +15,7 @@ locale_hi.json
 locale_hr.json
 locale_te.json
 locale_ko.json
+locale_el.json
 
 messages_ar.properties
 messages_de.properties
@@ -37,8 +38,6 @@ messages_sw.properties
 messages_te.properties
 
 # Ignore folders
-masterdata/
-openelis/
 fonts/
 node_modules/
 
@@ -68,12 +67,14 @@ node_modules/
 *.yml
 *.md
 *.gitignore
+*.gitkeep
 *.rb
 *.java
 *.xml
 *.csv
 *.html
 *.js
+*.txt
 
 # Ignore specific files
 app.json

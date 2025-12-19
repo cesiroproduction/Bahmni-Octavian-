@@ -18,7 +18,9 @@ trap cleanup EXIT
 declare -A MODULES=(
   ["bahmni-config"]="bahmni-standard-bahmni-config-1:/usr/local/bahmni_config"
   ["bahmni-web"]="bahmni-standard-bahmni-web-1:/usr/local/apache2/htdocs/bahmni"
+  ["bahmni-apps-frontend"]="bahmni-standard-bahmni-apps-frontend-1:/usr/local/apache2/htdocs/bahmni-new"
   ["appointments"]="bahmni-standard-appointments-1:/usr/local/apache2/htdocs/appointments"
+  ["microfrontend-ipd"]="ipd:/usr/local/apache2/htdocs/ipd"
 )
 
 usage() {
