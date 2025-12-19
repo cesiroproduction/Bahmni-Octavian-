@@ -2,10 +2,10 @@ name: Deploy to Bahmni Standard Docker Env
 on:
   push:
     branches:
-      - master
+      - dev
     paths:
-      - 'bahmni-standard/**'
-      - '.github/workflows/bahmni_standard_docker_env.yaml'
+      - "bahmni-standard/**"
+      - ".github/workflows/bahmni_standard_docker_env.yaml"
   repository_dispatch:
     types:
       - bahmni-helm-publish-event
@@ -42,7 +42,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.BAHMNI_AWS_SECRET }}
           aws-region: ap-south-1
           role-to-assume: ${{ secrets.BAHMNI_INFRA_ADMIN_ROLE }}
-          role-duration-seconds: 1200  # 20 mins
+          role-duration-seconds: 1200 # 20 mins
           role-session-name: BahmniInfraAdminSession
       - name: Create/Update Containers
         run: |
@@ -51,9 +51,9 @@ jobs:
           elif [ "$UPDATE_BAHMNI_OPTION" == "update_and_remove_volumes" ]; then
             command="docker compose --env-file .env.dev down -v && docker compose --env-file .env.dev up -d"
           fi
-          
+
           INSTANCE_ID=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=bahmni-standard-docker" "Name=instance-state-name,Values=running" --query "Reservations[].Instances[].InstanceId" --output text)
-          
+
           if [ -z "$INSTANCE_ID" ]; then
             echo "Instance not running"
           else
