@@ -59,7 +59,7 @@
 	"ALL_VISITS_KEY": "Toate vizitele",
 	"ALL_DIAGNOSES_KEY": "Toate diagnosticele",
 	"ALL_KEY": "Toate",
-	"SEARCH_NAME_PLACEHOLDER_KEY": "Căutare Nume/{{ primaryIdentifier }}  ...",
+	"SEARCH_NAME_PLACEHOLDER_KEY": "Căutare Nume/Identificator ...  ...",
 	"SEARCH_KEY": "Căutare",
 	"CLINICAL_YEARS_TRANSLATION_KEY": "ani",
 	"CLINICAL_MONTHS_TRANSLATION_KEY": "luni",

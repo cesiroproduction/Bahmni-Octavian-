@@ -72,12 +72,12 @@ node_modules/
 *.java
 *.xml
 *.csv
-*.html
-*.js
+; *.html
+; *.js
 *.txt
 
 # Ignore specific files
-app.json
+; app.json
 offline-config.json
 bower.json
 LICENSE

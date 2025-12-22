@@ -1,5 +1,5 @@
 {
-	"SEARCH_NAME_PLACEHOLDER_KEY": "Căutare Nume/{{ primaryIdentifier }}  ...",
+	"SEARCH_NAME_PLACEHOLDER_KEY": "Căutare Nume/Identificator ...  ...",
 	"SEARCH_KEY": "Căutare",
 	"NO_ADMISSION_DETAILS_MESSAGE": "Nu există detalii de internare pentru acest pacient.",
 	"NO_DIAGNOSIS_MESSAGE": "Nu există diagnostic pentru acest pacient",

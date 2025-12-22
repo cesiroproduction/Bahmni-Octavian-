@@ -1,5 +1,5 @@
 {
-	"SEARCH_NAME_PLACEHOLDER_KEY": "Căutare Nume/{{ primaryIdentifier }}  ...",
+	"SEARCH_NAME_PLACEHOLDER_KEY": "Căutare Nume/Identificator ...  ...",
 	"MESSAGE_DIALOG_OPTION_COPY": "Copiere eroare",
 	"MESSAGE_DIALOG_OPTION_OKAY": "OK",
 	"DOB_LABEL": "Data nașterii",

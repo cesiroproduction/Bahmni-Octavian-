@@ -105,5 +105,6 @@
   "WEIGHT_HEADER": "Greutate ({unit})",
   "BMI_HEADER": "IMC ({unit})",
   "MUAC": "MUAC ({unit})",
-  "CREATED_BY": "Creat de {provider}"
+  "CREATED_BY": "Creat de {provider}",
+  "NO_SEARCH_RESULTS_PATIENTS_WARD_MESSAGE": "Niciun rezultat găsit."
 }
