@@ -5,16 +5,36 @@
     return;
   }
 
-  var textMap = {
-    "All Tasks": "Toate sarcinile",
-    "Medication Tasks": "Sarcini medicație",
-    "Non-Medication Tasks": "Sarcini non-medicație"
-  };
+  var translations = {};
 
-  var placeholderMap = {
-    "Type a minimum of 3 characters to search patient by name, bed number or patient ID":
-      "Introduceți minimum 3 caractere pentru a căuta pacientul după nume, număr pat sau ID pacient"
-  };
+  function t(key, fallback) {
+    return translations[key] || fallback;
+  }
+
+  function buildMaps() {
+    return {
+      textMap: {
+        "All Tasks": t("BEDMGMT_TASK_FILTER_ALL", "All Tasks"),
+        "Medication Tasks": t(
+          "BEDMGMT_TASK_FILTER_MEDICATION",
+          "Medication Tasks"
+        ),
+        "Non-Medication Tasks": t(
+          "BEDMGMT_TASK_FILTER_NON_MEDICATION",
+          "Non-Medication Tasks"
+        ),
+      },
+      placeholderMap: {
+        "Type a minimum of 3 characters to search patient by name, bed number or patient ID":
+          t(
+            "BEDMGMT_SEARCH_PLACEHOLDER",
+            "Type a minimum of 3 characters to search patient by name, bed number or patient ID"
+          ),
+      },
+    };
+  }
+
+  var maps = buildMaps();
 
   function replaceTextNode(node) {
     var value = node.nodeValue;
@@ -25,7 +45,7 @@
     if (!trimmed) {
       return;
     }
-    var replacement = textMap[trimmed];
+    var replacement = maps.textMap[trimmed];
     if (!replacement) {
       return;
     }
@@ -43,8 +63,8 @@
 
     if (node.tagName === "INPUT") {
       var placeholder = node.getAttribute("placeholder");
-      if (placeholder && placeholderMap[placeholder]) {
-        node.setAttribute("placeholder", placeholderMap[placeholder]);
+      if (placeholder && maps.placeholderMap[placeholder]) {
+        node.setAttribute("placeholder", maps.placeholderMap[placeholder]);
       }
     }
 
@@ -59,10 +79,12 @@
     replaceElement(document.body);
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", run);
-  } else {
-    run();
+  function init() {
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", run);
+    } else {
+      run();
+    }
   }
 
   var observer = new MutationObserver(function (mutations) {
@@ -77,9 +99,28 @@
     });
   });
 
-  observer.observe(document.documentElement, {
-    childList: true,
-    subtree: true,
-    characterData: true
-  });
+  function loadLocale(lang) {
+    return fetch("/ipd/i18n/locale_" + lang + ".json", { cache: "no-store" })
+      .then(function (response) {
+        return response.ok ? response.json() : null;
+      })
+      .catch(function () {
+        return null;
+      });
+  }
+
+  var lang = localStorage.getItem("NG_TRANSLATE_LANG_KEY") || "en";
+  loadLocale(lang)
+    .then(function (data) {
+      translations = data || {};
+      maps = buildMaps();
+    })
+    .finally(function () {
+      init();
+      observer.observe(document.documentElement, {
+        childList: true,
+        subtree: true,
+        characterData: true,
+      });
+    });
 })();

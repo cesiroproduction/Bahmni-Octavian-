@@ -38,8 +38,8 @@ messages_sw.properties
 messages_te.properties
 
 # Ignore folders
-fonts/
-node_modules/
+**/fonts/
+**/node_modules/
 
 # Ignore extensions
 *.groovy

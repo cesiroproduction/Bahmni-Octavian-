@@ -45,6 +45,13 @@
 	"DELETE_LABEL": "Șterge",
 	"EDIT_LABEL": "Editează",
 	"REPORT_DATE_RANGE": "Selectați intervalul de date",
+	"REPORTS_DATE_RANGE_TODAY": "Astăzi",
+	"REPORTS_DATE_RANGE_THIS_MONTH": "Luna aceasta",
+	"REPORTS_DATE_RANGE_PREVIOUS_MONTH": "Luna trecută",
+	"REPORTS_DATE_RANGE_THIS_QUARTER": "Trimestrul acesta",
+	"REPORTS_DATE_RANGE_THIS_YEAR": "Anul acesta",
+	"REPORTS_DATE_RANGE_LAST_7_DAYS": "Ultimele 7 zile",
+	"REPORTS_DATE_RANGE_LAST_30_DAYS": "Ultimele 30 de zile",
 	"START_DATE_CANNOT_LATER_THAN_STOP_DATE": "data de început nu poate fi ulterioară datei de sfârșit",
 	"LOGOUT_TRANSLATION_KEY": "Deconectare"
 }

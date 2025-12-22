@@ -107,5 +107,9 @@
   "MUAC": "MUAC ({unit})",
   "CREATED_BY": "Creat de {provider}",
   "NO_SEARCH_RESULTS_PATIENTS_WARD_MESSAGE": "Niciun rezultat găsit.",
-  "CHANGE_PASSWORD": "Schimbare parolă"
+  "CHANGE_PASSWORD": "Schimbare parolă",
+  "BEDMGMT_TASK_FILTER_ALL": "Meow",
+  "BEDMGMT_TASK_FILTER_MEDICATION": "Sarcini medicație",
+  "BEDMGMT_TASK_FILTER_NON_MEDICATION": "Sarcini non-medicație",
+  "BEDMGMT_SEARCH_PLACEHOLDER": "Introduceți minimum 3 caractere pentru a căuta pacientul după nume, număr pat sau ID pacient"
 }

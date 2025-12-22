@@ -105,5 +105,9 @@
   "WEIGHT_HEADER": "Weight ({unit})",
   "BMI_HEADER": "BMI ({unit})",
   "MUAC": "MUAC ({unit})",
-  "CREATED_BY": "Created by {provider}"
+  "CREATED_BY": "Created by {provider}",
+  "BEDMGMT_TASK_FILTER_ALL": "All Tasks",
+  "BEDMGMT_TASK_FILTER_MEDICATION": "Medication Tasks",
+  "BEDMGMT_TASK_FILTER_NON_MEDICATION": "Non-Medication Tasks",
+  "BEDMGMT_SEARCH_PLACEHOLDER": "Type a minimum of 3 characters to search patient by name, bed number or patient ID"
 }

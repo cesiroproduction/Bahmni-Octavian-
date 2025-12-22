@@ -16,13 +16,14 @@ trap cleanup EXIT
 
 # --- Define Your Modules Here ---
 declare -A MODULES=(
+  ["appointments"]="bahmni-standard-appointments-1:/usr/local/apache2/htdocs/appointments"
+  ["bahmni-apps-frontend"]="bahmni-standard-bahmni-apps-frontend-1:/usr/local/apache2/htdocs/bahmni-new"
   ["bahmni-config"]="bahmni-standard-bahmni-config-1:/usr/local/bahmni_config"
   ["bahmni-web"]="bahmni-standard-bahmni-web-1:/usr/local/apache2/htdocs/bahmni"
-  ["bahmni-apps-frontend"]="bahmni-standard-bahmni-apps-frontend-1:/usr/local/apache2/htdocs/bahmni-new"
-  ["appointments"]="bahmni-standard-appointments-1:/usr/local/apache2/htdocs/appointments"
   ["microfrontend-ipd"]="ipd:/usr/local/apache2/htdocs/ipd"
   # ["pacs-integration"]="bahmni-standard-pacs-integration-1:/usr/share/locale/en_GB"
-  ["reports"]="bahmni-standard-reports-1:/home/bahmni/reports"
+  # ["reports"]="bahmni-standard-reports-1:/home/bahmni/reports",
+  # ["openelis"]="bahmni-standard-openelis-1:/opt/openelisglobal"
 )
 
 usage() {
@@ -333,12 +334,53 @@ process_module() {
 
       if $DRY_RUN; then
         echo "🧽 [DRY RUN] Would remove these *.incoming files under: $host_path"
-        find "$host_path" -type f -name '*.incoming' -print | sed 's/^/  - /'
+        local incoming_list
+        incoming_list="$(find "$host_path" -type f -name '*.incoming' -print 2>/dev/null)"
+        if [[ -n "$incoming_list" ]]; then
+          echo "$incoming_list" | sed 's/^/  - /'
+        else
+          echo "  (none)"
+        fi
+
+        echo "🧽 [DRY RUN] Would remove these empty directories AFTER deleting *.incoming (nested empties included):"
+
+        # Build a set of directories that must be kept because they contain
+        # at least one non-*.incoming file somewhere in their subtree.
+        local -A KEEP_DIRS=()
+
+        while IFS= read -r -d '' f; do
+          local d cur
+          d="$(dirname "$f")"
+          cur="$d"
+          while true; do
+            KEEP_DIRS["$cur"]=1
+            [[ "$cur" == "$host_path" ]] && break
+            cur="$(dirname "$cur")"
+            [[ "$cur" == "/" ]] && break
+          done
+        done < <(find "$host_path" -type f ! -name '*.incoming' -print0 2>/dev/null)
+
+        local printed=false
+        while IFS= read -r -d '' d; do
+          if [[ -z "${KEEP_DIRS[$d]:-}" ]]; then
+            echo "  - ${d#"$host_path"/}"
+            printed=true
+          fi
+        done < <(find "$host_path" -mindepth 1 -type d -print0 2>/dev/null)
+
+        $printed || echo "  (none)"
+
       else
-        local count
-        count="$(find "$host_path" -type f -name '*.incoming' -print | wc -l | tr -d ' ')"
-        find "$host_path" -type f -name '*.incoming' -delete
-        echo "🧽 Removed $count *.incoming file(s) under: $host_path"
+        local incoming_count dir_count
+
+        incoming_count="$(find "$host_path" -type f -name '*.incoming' -print 2>/dev/null | wc -l | tr -d ' ')"
+        find "$host_path" -type f -name '*.incoming' -delete 2>/dev/null
+
+        # Remove empty directories (nested empties included). -depth ensures children first.
+        # -mindepth 1 ensures we don't delete the module root folder itself.
+        dir_count="$(find "$host_path" -depth -type d -empty -print -delete 2>/dev/null | wc -l | tr -d ' ')"
+
+        echo "🧽 Removed $incoming_count *.incoming file(s) and $dir_count empty directorie(s) under: $host_path"
       fi
       ;;
 

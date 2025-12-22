@@ -1,0 +1,3 @@
+[submodule "OpenElis"]
+	path = OpenElis
+	url = https://github.com/Bahmni/OpenElis.git

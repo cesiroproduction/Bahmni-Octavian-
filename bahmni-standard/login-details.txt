@@ -1,0 +1,26 @@
+# Default Login Details
+
+## Bahmni (Clinical Service)
+
+- Username: superman
+- Password: Admin123
+
+## OpenELIS (Laboratory)
+
+- Username: admin
+- Password: adminADMIN!
+
+## Odoo (Stock Inventory & Billing)
+
+- Username: admin
+- Password: admin
+
+## DCM4CHEE (Radiology)
+
+- Username: admin
+- Password: admin
+
+## Metabase (Analytics)
+
+- Username: <admin@mybahmni.org>
+- Password: Admin@123

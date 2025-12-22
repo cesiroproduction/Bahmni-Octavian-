@@ -10,7 +10,7 @@
                     <div style="width: 170px; margin-right: 25px">
                         {{::'REPORT_DATE_RANGE' | translate}}
                         <span class="asterick">*</span>
-                        <select ng-model="default.reportsRequiringDateRange.dateRangeType" ng-options="type as (dateRangeLabels[label] || label) for (label , type) in ::dateRange" ng-change="setDefault('dateRangeType', 'reportsRequiringDateRange')">
+                        <select ng-model="default.reportsRequiringDateRange.dateRangeType" ng-options="type as (dateRangeLabels[label] ? (dateRangeLabels[label] | translate) : label) for (label , type) in ::dateRange" ng-change="setDefault('dateRangeType', 'reportsRequiringDateRange')">
                         </select>
                     </div>
                 </th>
