@@ -31,7 +31,7 @@
 	"CREATE_PATIENT_GENDER_MALE": "Masculin",
 	"CREATE_PATIENT_GENDER_OTHER": "Altul",
 	"CREATE_PATIENT_HEADER_TITLE": "Pacient nou",
-	"CREATE_PATIENT_HOUSE_NUMBER": "Număr casă / Număr apartament",
+	"CREATE_PATIENT_HOUSE_NUMBER": "Număr casă/apartament",
 	"CREATE_PATIENT_LAST_NAME": "Nume de familie",
 	"CREATE_PATIENT_LOCALITY": "Localitate/Sector",
 	"CREATE_PATIENT_MIDDLE_NAME": "Al doilea prenume",
