@@ -23,7 +23,7 @@ declare -A MODULES=(
   ["microfrontend-ipd"]="ipd:/usr/local/apache2/htdocs/ipd"
   # ["pacs-integration"]="bahmni-standard-pacs-integration-1:/usr/share/locale/en_GB"
   # ["reports"]="bahmni-standard-reports-1:/home/bahmni/reports",
-  # ["openelis"]="bahmni-standard-openelis-1:/opt/openelisglobal"
+  ["openelis"]="bahmni-standard-openelis-1:/run/bahmni-lab/bahmni-lab/WEB-INF/classes"
 )
 
 usage() {

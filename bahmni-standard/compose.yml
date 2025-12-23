@@ -29,17 +29,6 @@ services:
     image: "bahmni/standard-config:${CONFIG_IMAGE_TAG:?}"
     volumes:
       - "${CONFIG_VOLUME:?}:/usr/local/bahmni_config"
-    # command: >
-    #   sh -lc '
-    #     ./start.sh &
-    #     pid=$!
-    #     # give it a moment to do its init/copy work
-    #     sleep 2
-    #     rm -rf /etc/bahmni_config
-    #     ln -s /usr/local/bahmni_config /etc/bahmni_config
-    #     # keep container alive for debugging (optional)
-    #     tail -f /dev/null
-    #   '
     logging: *log-config
     restart: ${RESTART_POLICY}
 
@@ -520,7 +509,7 @@ services:
     profiles: ["emr", "bahmni-standard", "bahmni-mart"]
     restart: ${RESTART_POLICY}
     # volumes:
-    #   - "${IPD_PATH:?}/dist/federation/:/usr/local/apache2/htdocs/ipd"
+    #   - "${IPD_PATH:?}:/usr/local/apache2/htdocs/ipd"
     logging: *log-config
 
   cdss:
