@@ -1,48 +1,39 @@
-# Ignore specific locales
-locale_de.json
-locale_es.json
-locale_km.json
-locale_fr.json
-locale_pt.json
-locale_pt_BR.json
-locale_lo.json
-locale_ru.json
-locale_zh.json
-locale_vi.json
-locale_ar.json
-locale_it.json
-locale_hi.json
-locale_hr.json
-locale_te.json
-locale_ko.json
-locale_el.json
-
-messages_ar.properties
-messages_de.properties
-messages_el.properties
-messages_es.properties
-messages_fa.properties
-messages_fr.properties
-messages_hi.properties
-messages_ht.properties
-messages_hy.properties
-messages_id_ID.properties
-messages_it.properties
-messages_ku.properties
-messages_lt.properties
-messages_pl.properties
-messages_pt.properties
-messages_ru.properties
-messages_si.properties
-messages_sw.properties
-messages_te.properties
-
-# Ignore folders
 fonts/
 node_modules/
-us/mn/
 
-# Ignore extensions
+# JSON files
+*.json
+
+!apps/**/*.json
+!i18n/**/*.json
+
+locale_*.json
+
+!locale_en.json
+!locale_ro.json
+
+# JSP files
+*.jsp
+
+!banner.jsp
+
+# Properties files
+*.properties
+
+!messages.properties
+!messages_ro.properties
+!MessageResources.properties
+!MessageResources_ro.properties
+!BahmniMessageResources.properties
+!BahmniMessageResources_ro.properties
+!SetOfSupportedLanguages.properties
+
+*.html
+
+!reports/index.html
+!reports/views/reports.html
+!bedmanagement/index.html
+
 *.groovy
 *.sql
 *.css
@@ -73,13 +64,11 @@ us/mn/
 *.java
 *.xml
 *.csv
-; *.html
-; *.js
+*.js
 *.txt
+*.class
 
 # Ignore specific files
-; app.json
-offline-config.json
-bower.json
 LICENSE
-DefaultPatientMatchingAlgorithm
+patientMatchingAlgorithm/DefaultPatientMatchingAlgorithm
+concepts/fhir2Extension.csv
