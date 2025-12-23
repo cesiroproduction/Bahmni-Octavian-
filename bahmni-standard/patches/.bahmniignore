@@ -3,23 +3,23 @@ node_modules/
 
 # JSON files
 *.json
-
 !apps/**/*.json
 !i18n/**/*.json
 
-locale_*.json
+apps/home/*.json
+!apps/home/locale_languages.json
+!apps/home/whiteLabel.json
 
+locale_*.json
 !locale_en.json
 !locale_ro.json
 
 # JSP files
 *.jsp
-
 !banner.jsp
 
 # Properties files
 *.properties
-
 !messages.properties
 !messages_ro.properties
 !MessageResources.properties
@@ -29,15 +29,16 @@ locale_*.json
 !SetOfSupportedLanguages.properties
 
 *.html
-
 !reports/index.html
 !reports/views/reports.html
 !bedmanagement/index.html
 
+*.war
 *.groovy
 *.sql
 *.css
 *.scss
+*.less
 *.bsh
 *.eot
 *.ttf
@@ -54,8 +55,8 @@ locale_*.json
 *.ico
 *.pdf
 *.jar
-*.war
 *.zip
+*.rar
 *.yml
 *.md
 *.gitignore
@@ -67,6 +68,13 @@ locale_*.json
 *.js
 *.txt
 *.class
+*.MF
+*.xsl
+*.conf
+*.manifest
+*.tld
+*.cfg
+*.sar
 
 # Ignore specific files
 LICENSE

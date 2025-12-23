@@ -28,6 +28,7 @@ declare -A MODULES=(
   ["bahmni-apps-frontend"]="bahmni-standard-bahmni-apps-frontend-1:/usr/local/apache2/htdocs/bahmni-new"
   ["bahmni-config"]="bahmni-standard-bahmni-config-1:/usr/local/bahmni_config/openmrs"
   ["bahmni-web"]="bahmni-standard-bahmni-web-1:/usr/local/apache2/htdocs/bahmni"
+  ["dcm4chee"]="bahmni-standard-dcm4chee-1:/var/lib/bahmni/dcm4chee/server/default/deploy"
   ["microfrontend-ipd"]="ipd:/usr/local/apache2/htdocs/ipd/i18n"
   ["openelis"]="bahmni-standard-openelis-1:/run/bahmni-lab/bahmni-lab/pages/common | /run/bahmni-lab/bahmni-lab/WEB-INF/classes"
 )
